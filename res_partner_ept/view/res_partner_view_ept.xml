@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	
+    	<record id="view_registration_partner_form_ept" model="ir.ui.view">
+    	<field name="name">view.registration.partner.form.ept</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+			<form string="Partner Registration" version="7.0">
+					<header>
+		    			<button name="set_to_approve" string="Approve" states="on_draft" type="object" class="oe_highlight" />
+		    			<button name="set_to_draft" string="Set to Draft" states="on_approval,on_reject" type="object" class="oe_highlight" />
+		    			<button name="set_to_reject" string="Reject" states="on_draft" type="object" class="oe_highlight" />
+	           			<field name="state" widget="statusbar"  clickable="True"/>
+	            	</header>
+		    	<sheet>
+		            <group>
+		            	<group>
+		                <field name="name" default_focus="1" string="Name"/>
+		                	<label for="street" string="Address"/>
+		                    <div>    
+		                    	<field name="street" placeholder="Street..." />
+		                        <field name="street2" />
+		                        <div class="address_format">
+		                        	<field name="city" placeholder="City" style="width: 40%" />
+		                            <field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%" />
+		                            <field name="zip" placeholder="ZIP" style="width: 20%" />
+		                        </div>
+		                        	<field name="country_id" placeholder="Country" class="oe_no_button" />
+		                     	 </div>
+		                    	 <field name="website" widget="url" placeholder="e.g. www.openerp.com"/>
+		                </group>
+		                <group>
+		                	<field name="phone" placeholder="e.g. +32.81.81.37.00"/>
+		                    <field name="mobile"/>
+		                    <field name="fax"/>
+		                    <field name="email"/>
+		                    <field name="title"/>
+		                </group>
+            		    <group string="Company Informations">
+           					<field name="company_type" />
+            				<field name="company_name_ept" placeholder="Company Name"/>
+            				<field name="owner_name_ept" placeholder="Enter Owner Name"/>	            				
+           				</group>
+           				<group string="Member Of">
+           					<field name="members_of_trade_portal_ept"/>
+           					<field name="members_of_trade_association_ept"/>
+           				</group>
+                        <group string="Contact Informations">
+           					<field name="alternate_email_ept" placeholder="e.g info@yourcompany.com"/>
+           					<field name="contact_mobile_number_ept" placeholder="e.g. +91-999..."/>
+           					<field name="contact_number_ept" placeholder="e.g. +91-999..."/>
+           					<field name="extension_ept"/>
+           				</group>
+           				<group string="Business Information">
+           					<field name="nature_of_business_ept"/>
+           					<field name="broker_ept"/>
+           					<field name="agent_ept"/>
+           					<field name="dun_bradstreet_number_ept"/>            					
+           				</group>
+           				<group string="Third Party Reference">
+           					<field name="third_party_name_ept"/>
+           					<field name="third_party_contact_number_ept"/>     
+           					<field name="third_party_address_ept"/>
+           					<field name="third_party_email_ept"/>            					       					
+           				</group>
+           				<group string="Misc.">
+           					<field name="first_name" />
+           		            <field name="last_name" />
+           					<field name="gender_ept"/>
+           					<field name="birthdate_ept"/>
+           					<field name="anniversary_date_ept"/>
+           				</group>            				
+		             </group>
+            		 <group colspan="2" col="4" string="Bank Information">
+            		 	  <field name="bank_ids" nolabel="1"/>
+            		 </group>
+				 </sheet>
+			  </form>
+			</field>    		
+    	</record>
+    	
+    	
+    	<record id="view_partner_form_ept" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+            	<field name="website" position="after">
+            		<field name="is_manufacturer"/>
+					<field name="registration_type" string="Registred through website?"/>            		
+            	</field>
+            	<xpath expr="//page[@string='Internal Notes']" position="after">
+            		<page string="Extra Informations">
+            			<group>
+            				<group string="Company Informations">
+            					<field name="company_type" />
+	            				<field name="company_name_ept" placeholder="Company Name"/>
+	            				<field name="owner_name_ept" placeholder="Enter Owner Name"/>	            				
+            				</group>
+            				
+            				<group string="Member Of">
+            					<field name="members_of_trade_portal_ept"/>
+            					<field name="members_of_trade_association_ept"/>
+            				</group>
+            				
+            				<group string="Contact Informations">
+            					<field name="alternate_email_ept" placeholder="e.g info@yourcompany.com"/>
+            					<field name="contact_mobile_number_ept" placeholder="e.g. +91-999..."/>
+            					<field name="contact_number_ept" placeholder="e.g. +91-999..."/>
+            					<field name="extension_ept"/>
+            				</group>
+            				
+            				<group string="Business Information">
+            					<field name="nature_of_business_ept"/>
+            					<field name="broker_ept"/>
+            					<field name="agent_ept"/>
+            					<field name="dun_bradstreet_number_ept"/>            					
+            				</group>
+            				
+            				<group string="Third Party Reference">
+            					<field name="third_party_name_ept"/>
+            					<field name="third_party_contact_number_ept"/>     
+            					<field name="third_party_address_ept"/>
+            					<field name="third_party_email_ept"/>            					       					
+            				</group>
+            				<group string="Misc.">
+            					<field name="first_name" />
+            		            <field name="last_name" />
+            					<field name="gender_ept"/>
+            					<field name="birthdate_ept"/>
+            					<field name="anniversary_date_ept"/>
+            				</group>
+            			</group>
+            			
+            		</page>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record id="action_res_partner_ept" model="ir.actions.act_window">
+            <field name="name">Partner</field>
+            <field name="res_model">res.partner</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[('registration_type','=',True)]</field>
+        </record>
+        <record id="act_res_partner_tree_ept" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="base.view_partner_tree"/>
+            <field name="act_window_id" ref="action_res_partner_ept"/>
+        </record> 
+        <record id="act_res_partner_form_ept" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_registration_partner_form_ept"/>
+            <field name="act_window_id" ref="action_res_partner_ept"/>
+        </record>        
+        
+        
+        <menuitem id="menu_registration_type_partner"
+     	name="Partner Ragistration"
+        action="action_res_partner_ept"
+        parent="base.menu_sales"/>
+    </data>
+</openerp>
