@@ -736,7 +736,8 @@ License: Teamforest licence
 		margin: 0;
 		padding:0;
 		list-style: none;
-		position:relative;		
+		position:relative;
+		border-bottom: 0px;	
 	}
 	
 	.nav-tabs:before,
