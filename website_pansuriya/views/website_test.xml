@@ -671,7 +671,7 @@
 										</div>
 
 										<div onclick="gridSortData('table')" title="Table" class="gridcolumn11">
-											table
+											Table
 											<img class="divtable" style="" src="/website_pansuriya/static/src/images/arrow_up_down.png"/>
 										</div>
 										<div onclick="" title="measurement" class="gridcolumn12">
@@ -702,7 +702,7 @@
 										</div>
 										<div onclick="gridSortData('back_percentage')" title="Back Percentage"
 											class="gridcolumn16">
-											Live rate
+											Live Rate
 											<img class="divback_percentage" style=""
 												src="/website_pansuriya/static/src/images/arrow_up_down.png"/>
 										</div>
@@ -769,7 +769,7 @@
 										</div>
 
 										<div onclick="gridSortData('table')" title="Table" class="gridcolumn11">
-											table
+											Table
 											<img class="divtable" style="" src="/website_pansuriya/static/src/images/arrow_up_down.png"/>
 										</div>
 										<div onclick="" title="measurement" class="gridcolumn12">
