@@ -151,6 +151,7 @@
 													<label for="shape" class="dropdown_label">Shape</label>
 													<select style="width: 165px;float:left;" name="shape"
 														id="shape" class="select">
+														<option value="">-- Any --</option>
 														<t t-foreach="product_shapes" t-as="shape">
 															<option t-att-value="shape.id"><t t-esc="shape.name"/></option> 
 														</t>		
@@ -177,7 +178,7 @@
 
 														<label for="color" class="dropdown_label">Color</label>
 														<select style="" name="color" id="color" class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_colors" t-as="color">
 															<option t-att-value="color.seq"><t t-esc="color.name"/></option> 
 															</t>
@@ -191,7 +192,7 @@
 														<label for="color_to" class="dropdown_label">&#160; </label>
 														<select style="" name="color_to" id="color_to"
 															class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_colors" t-as="color">
 															<option t-att-value="color.seq"><t t-esc="color.name"/></option> 
 															</t>
@@ -204,7 +205,7 @@
 
 														<label for="clarity" class="dropdown_label">Clarity</label>
 														<select style="" name="clarity" id="clarity" class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_clarities" t-as="clarity">
 															<option t-att-value="clarity.seq"><t t-esc="clarity.name"/></option> 
 															</t>
@@ -218,7 +219,7 @@
 														<label for="clarity_to" class="dropdown_label">&#160; </label>
 														<select style="" name="clarity_to" id="clarity_to"
 															class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_clarities" t-as="clarity">
 															<option t-att-value="clarity.seq"><t t-esc="clarity.name"/></option>
 															</t>
@@ -234,7 +235,7 @@
 
 														<label for="cut" class="dropdown_label">Cut</label>
 														<select name="cut" id="cut" class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_cuts" t-as="cut">
 															<option t-att-value="cut.seq"><t t-esc="cut.name"/></option>
 															</t>
@@ -246,7 +247,7 @@
 													<div class="myspan1">
 														<label for="cut_to" class="dropdown_label">&#160; </label>
 														<select name="cut_to" id="cut_to" class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_cuts" t-as="cut">
 															<option t-att-value="cut.seq"><t t-esc="cut.name"/></option> 
 															</t>
@@ -260,7 +261,7 @@
 
 														<label for="polish" class="dropdown_label">Polish</label>
 														<select name="polish" id="polish" class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_polishes" t-as="polish">
 															<option t-att-value="polish.seq"><t t-esc="polish.name"/></option> 
 															</t>
@@ -273,7 +274,7 @@
 
 														<label for="polish_to" class="dropdown_label">&#160; </label>
 														<select name="polish_to" id="polish_to" class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_polishes" t-as="polish">
 															<option t-att-value="polish.seq"><t t-esc="polish.name"/></option>
 															</t>
@@ -287,7 +288,7 @@
 
 														<label for="symmetry" class="dropdown_label">Symmetry</label>
 														<select name="symmetry" id="symmetry" class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_symmetries" t-as="symmetry">
 															<option t-att-value="symmetry.seq"><t t-esc="symmetry.name"/></option> 
 															</t>
@@ -300,7 +301,7 @@
 
 														<label for="symmetry_to" class="dropdown_label">&#160; </label>
 														<select name="symmetry_to" id="symmetry_to" class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_symmetries" t-as="symmetry">
 															<option t-att-value="symmetry.seq"><t t-esc="symmetry.name"/></option>
 															</t>
@@ -313,7 +314,7 @@
 														<label for="fluorescence" class="dropdown_label">Fluorescence</label>
 														<select name="fluorescence" id="fluorescence"
 															class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_fluorescence_intensities" t-as="fluorescence">
 															<option t-att-value="fluorescence.seq"><t t-esc="fluorescence.name"/></option> 
 															</t>
@@ -326,7 +327,7 @@
 														<label for="fluorescence" class="dropdown_label">&#160; </label>
 														<select name="fluorescence_to" id="fluorescence_to"
 															class="select">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_fluorescence_intensities" t-as="fluorescence">
 															<option t-att-value="fluorescence.seq"><t t-esc="fluorescence.name"/></option>
 															</t>
@@ -341,7 +342,7 @@
 													<label for="lab" class="dropdown_label">Lab</label>
 													<select style="width: 165px;float:left;" name="lab"
 														id="lab" class="select">
-														<option value="">Any</option>
+														<option value="">-- Any --</option>
 														<t t-foreach="product_labs" t-as="lab">
 															<option t-att-value="lab.id"><t t-esc="lab.name"/></option>
 														</t>
@@ -446,7 +447,7 @@
 														<div style="width: 127px; overflow: hidden; text-align: right;">
 															<select name="girdle_from" id="girdle_from" class="select"
 																style="width: 127px;">
-															<option value="">Any</option>
+															<option value="">-- Any --</option>
 															<t t-foreach="product_girdles" t-as="girdle">
 																<option t-att-value="girdle.seq"><t t-esc="girdle.name"/></option>
 															</t>
@@ -459,7 +460,7 @@
 														<div style="width: 127px; overflow: hidden; text-align: right;">
 															<select name="girdle_to" id="girdle_to" class="select"
 																style="width: 127px">
-																<option value="">Any</option>
+																<option value="">-- Any --</option>
 																<t t-foreach="product_girdles" t-as="girdle">
 																	<option t-att-value="girdle.seq"><t t-esc="girdle.name"/></option>
 																</t>
