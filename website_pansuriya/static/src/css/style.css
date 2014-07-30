@@ -163,7 +163,7 @@ License: Teamforest licence
 	.container_12 .grid_5 {width:380px;}
 	.container_12 .grid_6 {width:480px;}
 	.container_12 .grid_7 {width:540px;}
-	.container_12 .grid_8 {width:880px; font-family: 'NovecentowideNormalRegular';}
+	.container_12 .grid_8 {width:880px; font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;}
 	.container_12 .grid_9 {width:738px;}
 	.container_12 .grid_10 {width:780px;}
 	.container_12 .grid_11 {width:860px;}
@@ -202,13 +202,13 @@ License: Teamforest licence
 
 	input, textarea, select
 	{
-		font-family: 'NovecentowideNormalRegular';
+		font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
 		font-size: 11px;
 	}
 
 	.row a
 	{
-		font-family: 'NovecentowideNormalRegular';
+		font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
 		font-size: 14px;
 	}
 	strong {
@@ -1471,7 +1471,7 @@ License: Teamforest licence
 }
 .item_heading
 {
-	font-family: 'NovecentowideNormalRegular';
+	font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .myspan1 select
@@ -1535,7 +1535,7 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(7%,rgba(2
 .pop_na		{ float: left; font-weight: bold; margin-left: 5px; color: #d43162; }
 ul.addtocart-menu li		{ position: relative; }
 .cart-bkg	{ background: url(images/cart.png) no-repeat; width: 26px; height: 21px; }
-ul.addtocart-menu li ul.addtocart-submenu li a { background: none; text-decoration:inherit; padding: 5px; width: auto; color: #999999; font-family: 'NovecentowideNormalRegular'; font-size: 10px; }
+ul.addtocart-menu li ul.addtocart-submenu li a { background: none; text-decoration:inherit; padding: 5px; width: auto; color: #999999; font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 10px; }
 ul.addtocart-menu li ul.addtocart-submenu	{ position: absolute; display: none; top: 8px; left: 152px; width: 166px; }
 ul.addtocart-menu li:hover ul.addtocart-submenu { display: block;  }
 ul.addtocart-menu li a { font-family: "Myriad Pro"; font-size: 21.19px; color:#FFF; display: block; padding: 12px; text-decoration: none; width: 185px; 
@@ -1572,7 +1572,7 @@ a.add-to-watchlist	{ display: block; padding: 6px; color: #000000; font-size: 10
 
 
 input, textarea, select {
-    font-family: 'NovecentowideNormalRegular';
+    font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 11px;
 }
 input.input-text, select, textarea {
