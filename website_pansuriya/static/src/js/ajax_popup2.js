@@ -156,7 +156,7 @@ var cart_url='http://'+parent.window.location.host;
 //                							alert(data);
 //                			            });
                                 	//parent.jQuery('#stone_addtocart_181').submit();                                	
-                                	var loaderBckImg = domainname+"/website_test/static/src/images/loading.gif";
+                                	var loaderBckImg = domainname+"/website_pansuriya/static/src/images/loading.gif";
                                     jQuery('body').append('<div id="addedoverlay" style="display:none"></div>');
 				jQuery('body').append('<div id="added" style="display:none"><div id="added-internal"><div id="added-content"></div></div></div>');
 				var windowOver = jQuery('#addedoverlay');

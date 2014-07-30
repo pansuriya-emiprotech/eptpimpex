@@ -10,7 +10,7 @@ from openerp.addons.website_sale.models.sale_order import website as sale_websit
 
 
 class website_test(http.Controller):
-    @http.route(['/website-test'], type='http', auth="public", website=True)
+    @http.route(['/website-pansuriya'], type='http', auth="public", website=True)
     def website_test_data(self, **kwargs):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         product_shape = pool.get('product.shape')
@@ -71,9 +71,9 @@ class website_test(http.Controller):
                   'product_girdles':product_girdle_objects,
                   
                   }
-        return request.website.render("website_test.website_test_search_stone", values)
+        return request.website.render("website_pansuriya.website_test_search_stone", values)
     
-    @http.route(['/website-test/submit_json'], type='json', auth="public", methods=['POST'], website=True)
+    @http.route(['/website-pansuriya/submit_json'], type='json', auth="public", methods=['POST'], website=True)
     def website_test_thanks(self, **kwargs):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
         product_stone = pool.get('product.product')
@@ -136,9 +136,9 @@ class website_test(http.Controller):
             cut_to = cut_temp
         if not cut_from and cut_to:
             domain.append(('cut_id.seq','<=',cut_to))
-        if not clarity_to and clarity_from:
+        if not cut_to and cut_from:
             domain.append(('cut_id.seq','>=',cut_from))
-        if clarity_from and clarity_to:
+        if cut_from and cut_to:
             domain.append(('cut_id.seq','>=',cut_from))
             domain.append(('cut_id.seq','<=',cut_to))
         
@@ -340,13 +340,13 @@ class website_test(http.Controller):
             values.append(val)
         return values
     
-    @http.route(['/website-test/ajaxpopup'], type='http', auth="public", website=True)
+    @http.route(['/website-pansuriya/ajaxpopup'], type='http', auth="public", website=True)
     def ajax_popup(self,  **kwargs):
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry        
         entity_id = int(kwargs.get('id','0') or '0')        
         product_stone = pool.get('product.product')
         stones = product_stone.browse(cr,uid,[entity_id],context=context)
-        return request.website.render("website_test.ajax_popup", {'stone_objects':stones})
+        return request.website.render("website_pansuriya.ajax_popup", {'stone_objects':stones})
 #        val = {
 #                'entity_id': entity_id,
 #                'sku':product.default_code,

@@ -4,7 +4,7 @@
 // Identify all the json request for the data from database.
 	
 	//var domainname = "http://192.168.1.14:8069/website-test/";
-var domainname = "http://"+window.location.host+"/website-test/";
+var domainname = "http://"+window.location.host+"/website-pansuriya/";
 
 	var jsonGridData = [];
     var jsonBidData = [];
@@ -133,11 +133,11 @@ var domainname = "http://"+window.location.host+"/website-test/";
 												'<div class="gridcolumn17">' + objGridData[index].rapnet_price + '</div>' +
 												'<div class="gridcolumn18">' + objGridData[index].carat_price + '</div>' +                    
 												'<div class="gridcolumn19">' + objGridData[index].price + '</div>' +
-												'<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ', ' + index + ')"><img src="/website_test/static/src/images/' + imgProd + '"></div></a>' +
+												'<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ', ' + index + ')"><img src="/website_pansuriya/static/src/images/' + imgProd + '"></div></a>' +
 												'<div class="gridcolumn16 makebid'+objGridData[index].entity_id+'">' + objGridData[index].back_percentage + '</div>' +                    
 												bid_column +                    
 												'<div class="gridcolumn22 auction_timer_'+objGridData[index].entity_id+'" id="auction_timer_'+objGridData[index].entity_id+'">'+ objGridData[index].auction_time +'</div>' +
-												'<div class="gridcolumn15"><a href="javascript:void(0);" class="imgChk' + objGridData[index].entity_id + '" onClick="chkClickEvent(this,' + objGridData[index].entity_id + ')"><img class="imgChk" alt="check" src="/website_test/static/src/images/uncheck_box.png" /></a></div>' +                    
+												'<div class="gridcolumn15"><a href="javascript:void(0);" class="imgChk' + objGridData[index].entity_id + '" onClick="chkClickEvent(this,' + objGridData[index].entity_id + ')"><img class="imgChk" alt="check" src="/website_pansuriya/static/src/images/uncheck_box.png" /></a></div>' +                    
 												'</div>' +
 												'<div class="responsive_data" id="responsive_' + objGridData[index].entity_id + '"><div class="responsive_data_col_1" id="responsive_' + objGridData[index].entity_id + '_1"></div><div class="responsive_data_col_2" id="responsive_' + objGridData[index].entity_id + '_2"></div></div>';
 						jQuery(".DivMyBidInnerData").append(tempGridJsonData);
@@ -284,11 +284,11 @@ var domainname = "http://"+window.location.host+"/website-test/";
 										'<div class="gridcolumn17">' + objGridData[index].rapnet_price + '</div>' +
 										'<div class="gridcolumn18">' + objGridData[index].carat_price + '</div>' +                    
 										'<div class="gridcolumn19">' + objGridData[index].price + '</div>' +
-										'<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ', ' + index + ')"><img  src="/website_test/static/src/images' + imgProd + '"></div></a>' +
+										'<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ', ' + index + ')"><img  src="/website_pansuriya/static/src/images' + imgProd + '"></div></a>' +
 										'<div class="gridcolumn16 makebid'+objGridData[index].entity_id+'" id="makebid' + objGridData[index].entity_id + '">' + objGridData[index].back_percentage + '</div>' +                    
 										bid_column +                    
 										'<div class="gridcolumn22 auction_timer_'+objGridData[index].entity_id+'" id="auction_timer_'+objGridData[index].entity_id+'">'+ objGridData[index].auction_time +'</div>' +                                        
-										'<div class="gridcolumn15"><a href="javascript:void(0);" class="imgChk' + objGridData[index].entity_id + '" onClick="chkClickEvent(this,' + objGridData[index].entity_id + ')"><img class="imgChk" alt="check" src="/website_test/static/src/images/uncheck_box.png" /></a></div>' +                    
+										'<div class="gridcolumn15"><a href="javascript:void(0);" class="imgChk' + objGridData[index].entity_id + '" onClick="chkClickEvent(this,' + objGridData[index].entity_id + ')"><img class="imgChk" alt="check" src="/website_pansuriya/static/src/images/uncheck_box.png" /></a></div>' +                    
 										'</div>' +
 										'<div class="responsive_data" id="responsive_' + objGridData[index].entity_id + '"><div class="responsive_data_col_1" id="responsive_' + objGridData[index].entity_id + '_1"></div><div class="responsive_data_col_2" id="responsive_' + objGridData[index].entity_id + '_2"></div></div>';
 							jQuery(".DivGridInnerData").append(tempGridJsonData);
@@ -816,7 +816,7 @@ var domainname = "http://"+window.location.host+"/website-test/";
         if(type != 'search')
 		{
 			jQuery(".DivGridInnerData").html('');        
-			jQuery(".DivGridInnerData").html('<img style="padding-left:350px" src="/website_test/static/src/images/ajax-loader.gif" alt="Please wait" />');
+			jQuery(".DivGridInnerData").html('<img style="padding-left:350px" src="/website_pansuriya/static/src/images/ajax-loader.gif" alt="Please wait" />');
 		}
 
         loadData = 0;
@@ -859,7 +859,7 @@ var domainname = "http://"+window.location.host+"/website-test/";
             }
         });*/
 console.log(JSON.stringify(filterParams));
-        openerp.jsonRpc("/website-test/submit_json", 'call', {
+        openerp.jsonRpc("/website-pansuriya/submit_json", 'call', {
             'data': filterParams})
             .then(function (data) {
              
@@ -897,7 +897,7 @@ console.log(JSON.stringify(filterParams));
         var rmImgId = ".div" + tempFlagFilterAttr;
 
 
-        jQuery(rmImgId).attr('src', '/website_test/static/src/images/arrow_up_down.png');
+        jQuery(rmImgId).attr('src', '/website_pansuriya/static/src/images/arrow_up_down.png');
         jQuery(rmImgId).attr('style', '');
 
         if (tempFlagFilterAttr == tempGridFilterAttr) {
@@ -913,7 +913,7 @@ console.log(JSON.stringify(filterParams));
         if (tempFlagFilterSort == 1) {
 
             jQuery(imgId).removeAttr("style");
-            jQuery(imgId).attr('src', '/website_test/static/src/images/arrow_up.png');
+            jQuery(imgId).attr('src', '/website_pansuriya/static/src/images/arrow_up.png');
             jQuery(imgId).attr('style', '');
             jQuery(imgId).css('height', '4px');
             jQuery(imgId).css('width', '7px');
@@ -921,7 +921,7 @@ console.log(JSON.stringify(filterParams));
         } else {
 
             jQuery(imgId).removeAttr("style");
-            jQuery(imgId).attr('src', '/website_test/static/src/images/arrow_down.png');
+            jQuery(imgId).attr('src', '/website_pansuriya/static/src/images/arrow_down.png');
             jQuery(imgId).attr('style', '');
             jQuery(imgId).css('height', '4px');
             jQuery(imgId).css('width', '7px');
@@ -950,7 +950,7 @@ console.log(JSON.stringify(filterParams));
 
         var rmImgId = "#comparediv" + compareFlagFilterAttr;
 
-        jQuery(rmImgId).attr('src', '/website_test/static/src/images/arrow_up_down.png');
+        jQuery(rmImgId).attr('src', '/website_pansuriya/static/src/images/arrow_up_down.png');
         jQuery(rmImgId).attr('style', '');
 
         if (compareFlagFilterAttr == tempGridFilterAttr) {
@@ -966,13 +966,13 @@ console.log(JSON.stringify(filterParams));
         if (compareFlagFilterSort == 1) {
 
             jQuery(imgId).removeAttr("style");
-            jQuery(imgId).attr('src', '/website_test/static/src/images/arrow_up.png');
+            jQuery(imgId).attr('src', '/website_pansuriya/static/src/images/arrow_up.png');
             jQuery(imgId).attr('style', '');
             jQuery(imgId).css('height', '4px');
             jQuery(imgId).css('width', '7px');
         } else {
             jQuery(imgId).removeAttr("style");
-            jQuery(imgId).attr('src', '/website_test/static/src/images/arrow_down.png');
+            jQuery(imgId).attr('src', '/website_pansuriya/static/src/images/arrow_down.png');
             jQuery(imgId).attr('style', '');
             jQuery(imgId).css('height', '4px');
             jQuery(imgId).css('width', '7px');
@@ -1007,12 +1007,12 @@ console.log(JSON.stringify(filterParams));
     {
         if (jQuery(objBtn).find("img").attr('alt') == "check")
         {
-            jQuery(objBtn).html('<img class="imgChk" alt="uncheck" src="/website_test/static/src/images/check_box.png" />');
+            jQuery(objBtn).html('<img class="imgChk" alt="uncheck" src="/website_pansuriya/static/src/images/check_box.png" />');
             loadCompareGridData(entity_id, 'add');
         }
         else if (jQuery(objBtn).find("img").attr('alt') == "uncheck")
         {
-            jQuery(objBtn).html('<img class="imgChk" alt="check" src="/website_test/static/src/images/uncheck_box.png" />');
+            jQuery(objBtn).html('<img class="imgChk" alt="check" src="/website_pansuriya/static/src/images/uncheck_box.png" />');
             //jQuery('.gridhead > .gridcolumn15').html('<a href="javascript:void(0);" class="chkHead" onClick="chkClickAll(this)"><img class="imgChk" alt="check" src="images/uncheck_box.png" /></a>');
 
             removeCompareRow(entity_id, objBtn);
@@ -1023,16 +1023,16 @@ console.log(JSON.stringify(filterParams));
     {
         if (jQuery(objBtn).find("img").attr('alt') == "check")
         {
-            jQuery(objBtn).find('img').attr('alt', 'uncheck').attr('src', '/website_test/static/src/images/check_box.png');
-            jQuery('.gridrow > .gridcolumn15').find('img').attr('src', '/website_test/static/src/images/check_box.png').attr('alt', 'uncheck');
+            jQuery(objBtn).find('img').attr('alt', 'uncheck').attr('src', '/website_pansuriya/static/src/images/check_box.png');
+            jQuery('.gridrow > .gridcolumn15').find('img').attr('src', '/website_pansuriya/static/src/images/check_box.png').attr('alt', 'uncheck');
             compareCount = dataLength;
             jsonCompareData = jsonGridData;
             setCompareGrid();
         }
         else if (jQuery(objBtn).find("img").attr('alt') == "uncheck")
         {
-            jQuery(objBtn).find('img').attr('alt', 'check').attr('src', '/website_test/static/src/images/uncheck_box.png');
-            jQuery('.gridrow > .gridcolumn15').find('img').attr('src', '/website_test/static/src/images/uncheck_box.png').attr('alt', 'check');
+            jQuery(objBtn).find('img').attr('alt', 'check').attr('src', '/website_pansuriya/static/src/images/uncheck_box.png');
+            jQuery('.gridrow > .gridcolumn15').find('img').attr('src', '/website_pansuriya/static/src/images/uncheck_box.png').attr('alt', 'check');
 
             jsonCompareData = [];
             setCompareGrid();
@@ -1094,11 +1094,11 @@ console.log(JSON.stringify(filterParams));
                     '<div class="gridcolumn17">' + jsonCompareData[index].rapnet_price + '</div>' +
                     '<div class="gridcolumn18">' + jsonCompareData[index].carat_price + '</div>' +                    
                     '<div class="gridcolumn19">' + jsonCompareData[index].price + '</div>' +
-                    '<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + jsonCompareData[index].entity_id + ', ' + jsonCompareData[index].imgStatus + ', ' + index + ')"><img  src="/website_test/static/src/images/' + imgProd + '"></div></a>' +
+                    '<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + jsonCompareData[index].entity_id + ', ' + jsonCompareData[index].imgStatus + ', ' + index + ')"><img  src="/website_pansuriya/static/src/images/' + imgProd + '"></div></a>' +
                     '<div class="gridcolumn16 makebid'+jsonCompareData[index].entity_id+'" id="makebid' + jsonCompareData[index].entity_id + '">' + jsonCompareData[index].back_percentage + '</div>' +                    
                     bid_column +                    
                     '<div class="gridcolumn22 auction_timer_'+jsonCompareData[index].entity_id+'" id="auction_timer_'+jsonCompareData[index].entity_id+'">'+ jsonCompareData[index].auction_time +'</div>' +                                        
-                    '<div class="gridcolumn15"><a href="javascript:void(0);" onClick="removeCompareRow(' + jsonCompareData[index].entity_id + ',/main/)"><img src="/website_test/static/src/images/removeCompare.gif" /></a></div>' +
+                    '<div class="gridcolumn15"><a href="javascript:void(0);" onClick="removeCompareRow(' + jsonCompareData[index].entity_id + ',/main/)"><img src="/website_pansuriya/static/src/images/removeCompare.gif" /></a></div>' +
                     '</div>' +
                     '<div class="responsive_data" id="responsive_' + jsonCompareData[index].entity_id + '"><div class="responsive_data_col_1" id="responsive_' + jsonCompareData[index].entity_id + '_1"></div><div class="responsive_data_col_2" id="responsive_' + jsonCompareData[index].entity_id + '_2"></div></div>';                    
 					jQuery(".CompareGridInnerData").append(tempGridJsonData);					
@@ -1166,9 +1166,9 @@ console.log(JSON.stringify(filterParams));
         var tempMain = new String(objChk).replace(/\//gi, '');
 
         if (tempMain != "main") {
-            jQuery(objChk).html('<img class="imgChk" alt="check" src="/website_test/static/src/images/uncheck_box.png" />');
+            jQuery(objChk).html('<img class="imgChk" alt="check" src="/website_pansuriya/static/src/images/uncheck_box.png" />');
         } else {
-            jQuery('.imgChk' + entity_id).html('<img class="imgChk" alt="check" src="/website_test/static/src/images/uncheck_box.png" />');
+            jQuery('.imgChk' + entity_id).html('<img class="imgChk" alt="check" src="/website_pansuriya/static/src/images/uncheck_box.png" />');
         }
         var loopflag = false;
         var indextobedelete = 0;
@@ -1304,11 +1304,11 @@ console.log(JSON.stringify(filterParams));
                     '<div class="gridcolumn17">' + objGridData[index].rapnet_price + '</div>' +
                     '<div class="gridcolumn18">' + objGridData[index].carat_price + '</div>' +                    
                     '<div class="gridcolumn19">' + objGridData[index].price + '</div>' +
-                    '<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ', ' + index + ')"><img  src="/website_test/static/src/images/' + imgProd + '"></div></a>' +
+                    '<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ', ' + index + ')"><img  src="/website_pansuriya/static/src/images/' + imgProd + '"></div></a>' +
                     '<div class="gridcolumn16 makebid'+objGridData[index].entity_id+'" id="makebid' + objGridData[index].entity_id + '">' + objGridData[index].back_percentage + '</div>' +                    
                     bid_column +                    
                     '<div class="gridcolumn22 auction_timer_'+objGridData[index].entity_id+'" id="auction_timer_'+objGridData[index].entity_id+'">'+ objGridData[index].auction_time +'</div>' +
-                    '<div class="gridcolumn15"><a href="javascript:void(0);" class="imgChk' + objGridData[index].entity_id + '" onClick="chkClickEvent(this,' + objGridData[index].entity_id + ')"><img class="imgChk" alt="check" src="/website_test/static/src/images/uncheck_box.png" /></a></div>' +                    
+                    '<div class="gridcolumn15"><a href="javascript:void(0);" class="imgChk' + objGridData[index].entity_id + '" onClick="chkClickEvent(this,' + objGridData[index].entity_id + ')"><img class="imgChk" alt="check" src="/website_pansuriya/static/src/images/uncheck_box.png" /></a></div>' +                    
                     '</div>' +
                     '<div class="responsive_data" id="responsive_' + objGridData[index].entity_id + '"><div class="responsive_data_col_1" id="responsive_' + objGridData[index].entity_id + '_1"></div><div class="responsive_data_col_2" id="responsive_' + objGridData[index].entity_id + '_2"></div></div>';
                                 
@@ -1800,7 +1800,7 @@ console.log(JSON.stringify(filterParams));
     	
         var PopData;
         
-        openerp.jsonRpc("/website-test/popup", 'call', {
+        openerp.jsonRpc("/website-pansuriya/popup", 'call', {
             'data': {entity_id: entity_id} 
             })
             .then(function (data) {
