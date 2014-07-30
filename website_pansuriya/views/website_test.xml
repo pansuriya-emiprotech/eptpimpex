@@ -886,7 +886,7 @@
 
 										<div onclick="compareSortData('table')" title="Table"
 											class="gridcolumn11">
-											table
+											Table
 											<img id="comparedivtable" style=""
 												src="/website_pansuriya/static/src/images/arrow_up_down.png"/>
 										</div>
@@ -1000,7 +1000,7 @@
 
 										<div onclick="compareSortData('table')" title="Table"
 											class="gridcolumn11">
-											table
+											Table
 											<img id="comparedivtable" style=""
 												src="/website_pansuriya/static/src/images/arrow_up_down.png"/>
 										</div>
@@ -1121,7 +1121,7 @@
 										</div>
 
 										<div onclick="gridSortData('table')" title="Table" class="gridcolumn11">
-											table
+											Table
 											<img class="divtable" style="" src="/website_pansuriya/static/src/images/arrow_up_down.png"/>
 										</div>
 										<div onclick="" title="measurement" class="gridcolumn12">
@@ -1221,7 +1221,7 @@
 										</div>
 
 										<div onclick="gridSortData('table')" title="Table" class="gridcolumn11">
-											table
+											Table
 											<img class="divtable" style="" src="/website_pansuriya/static/src/images/arrow_up_down.png"/>
 										</div>
 										<div onclick="" title="measurement" class="gridcolumn12">
