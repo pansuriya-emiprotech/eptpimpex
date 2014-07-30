@@ -1503,7 +1503,7 @@
                             <div class="item_footer row clearfix" style="width: 100%;margin-left: 10px;margin-top: 10px;border-left: 1px solid #66ccdd;">
                               <form id="product_addtocart_form" action="/shop/cart/update" method="post">
                                   <div class="addtocart_shipping">
-									  											<div class="price shipping" style="height: 58px;border-top: 1px solid #66ccdd;;width: 90px !important;border-bottom: 1px solid #66ccdd;">
+									  											<div class="price shipping" style="height: 58px;border-top: 1px solid #66ccdd;width: 110px !important;border-bottom: 1px solid #66ccdd;">
                                           
                                           <span style="font-size: 14px;color: #d43162;">Back (%):
                                           <span t-field="stone.discount" />

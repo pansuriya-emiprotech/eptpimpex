@@ -278,11 +278,15 @@ class website_test(http.Controller):
         
         stone_ids = product_stone.search(cr,uid,domain)
         stone_objects =  product_stone.browse(cr,uid,stone_ids)
+        stone_count = len(stone_objects)
+        
+        #limit 30 stones to load more stones on scroll
+        
         values = []
         for stone in stone_objects:            
             val = {
                 'id' : stone.id,            
-                'count_collection' : 4,            
+                'count_collection' : stone_count,
                 'entity_id' : stone.id,
                 'sku' : stone.default_code,
                 'shape' : stone.shape_id.name,
