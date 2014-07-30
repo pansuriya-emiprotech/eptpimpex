@@ -752,7 +752,7 @@ License: Teamforest licence
 	}
 	
 	.nav-tabs > li {
-		margin-bottom: -1px;
+		margin-bottom: 0px;
 		float: left;
 	}
 	
