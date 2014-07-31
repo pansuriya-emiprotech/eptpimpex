@@ -18,27 +18,27 @@ class website_test(http.Controller):
         product_shape_objects = product_shape.browse(cr,uid,product_shape_ids)
         
         product_color = pool.get('product.color')
-        product_color_ids = product_color.search(cr,uid,[],order="name")
+        product_color_ids = product_color.search(cr,uid,[],order="seq")
         product_color_objects = product_color.browse(cr,uid,product_color_ids)
         
         product_clarity = pool.get('product.clarity')
-        product_clarity_ids = product_clarity.search(cr,uid,[],order="name")
+        product_clarity_ids = product_clarity.search(cr,uid,[],order="seq")
         product_clarity_objects = product_clarity.browse(cr,uid,product_clarity_ids)
         
         product_cut = pool.get('product.cut')
-        product_cut_ids = product_cut.search(cr,uid,[],order="name")
+        product_cut_ids = product_cut.search(cr,uid,[],order="seq")
         product_cut_objects = product_cut.browse(cr,uid,product_cut_ids)
         
         product_polish = pool.get('product.polish')
-        product_polish_ids = product_polish.search(cr,uid,[],order="name")
+        product_polish_ids = product_polish.search(cr,uid,[],order="seq")
         product_polish_objects = product_polish.browse(cr,uid,product_polish_ids)
         
         product_symmetry = pool.get('product.symmetry')
-        product_symmetry_ids = product_symmetry.search(cr,uid,[],order="name")
+        product_symmetry_ids = product_symmetry.search(cr,uid,[],order="seq")
         product_symmetry_objects = product_symmetry.browse(cr,uid,product_symmetry_ids)
         
         product_fluorescence_intensity = pool.get('product.fluorescence.intensity')
-        product_fluorescence_intensity_ids = product_fluorescence_intensity.search(cr,uid,[],order="name")
+        product_fluorescence_intensity_ids = product_fluorescence_intensity.search(cr,uid,[],order="seq")
         product_fluorescence_intensity_objects = product_fluorescence_intensity.browse(cr,uid,product_fluorescence_intensity_ids)
         
         product_lab = pool.get('product.lab')
@@ -54,7 +54,7 @@ class website_test(http.Controller):
         product_culet_condition_objects = product_culet_condition.browse(cr,uid,product_culet_condition_ids)
         
         product_girdle = pool.get('product.gridle')
-        product_girdle_ids = product_girdle.search(cr,uid,[],order="name")
+        product_girdle_ids = product_girdle.search(cr,uid,[],order="seq")
         product_girdle_objects = product_girdle.browse(cr,uid,product_girdle_ids)
         
         values = {
