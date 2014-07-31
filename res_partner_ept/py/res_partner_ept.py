@@ -48,10 +48,10 @@ class Partner(osv.Model):
                     'members_of_trade_association_ept':fields.char('Members of Trade Association'),
                     
                     #Third Party Reference
-                    'third_party_name_ept':fields.char('Third Party Name'),
-                    'third_party_contact_number_ept':fields.char('Third Party Contact Number'),
-                    'third_party_address_ept':fields.text('Third party address'),
-                    'third_party_email_ept':fields.char('Third party Email'),
+                    'third_party_name_ept':fields.char('Name'),
+                    'third_party_contact_number_ept':fields.char('Contact'),
+                    'third_party_address_ept':fields.text('Address'),
+                    'third_party_email_ept':fields.char('Email'),
                     
                     #Bank Details.
                     'branch_name_ept':fields.char('Branch Name'),
@@ -65,21 +65,36 @@ class Partner(osv.Model):
                  'registration_type' : False,
                  'state' : 'on_draft',
                  }
+    def set_body(self,cr,uid,ids,new_state):
+        body = ''
+        object = self.browse(cr,uid,ids[0])
+        state = ''
+        if object.state == 'on_draft' :
+            state = 'Draft'
+        elif object.state == 'on_approval':
+            state = "Approved"
+        elif object.state == 'on_reject':
+            state = "Rejected"
+        body = 'State changed from <b> ' + state + '</b> To <b> ' + new_state + '.</b>'
+        return body
     
     def set_to_approve(self, cr, uid, ids=None, context={}):
         user_id = self.pool.get('res.users').search(cr, uid, ['|',('active','=',True),('active','=',False),('partner_id','=',ids[0])])
         if user_id:
             self.pool.get('res.users').write(cr, uid, user_id, {'active':True}, context=context)
             self.send_email(cr, uid, ids, context=context)
+            self.message_post(cr, uid, ids[0], body=self.set_body(cr, uid, ids, 'Approved'), subject='', type='notification' , context=context)
         return self.write(cr, uid, ids, {'state':'on_approval'}, context=context)
     
     def set_to_draft(self, cr, uid, ids=None, context={}):
+        self.message_post(cr, uid, ids[0], body=self.set_body(cr, uid, ids, 'Draft'), subject='', type='notification' , context=context)
         return self.write(cr, uid, ids, {'state':'on_draft'}, context=context)
     
     def set_to_reject(self, cr, uid, ids=None, context={}):
         user_id = self.pool.get('res.users').search(cr, uid, ['|',('active','=',True),('active','=',False),('partner_id','=',ids[0])])
         if user_id:
             self.pool.get('res.users').write(cr, uid, user_id, {'active':False}, context=context)
+        self.message_post(cr, uid, ids[0], body=self.set_body(cr, uid, ids, 'Rejected'), subject='', type='notification' , context=context)
         return self.write(cr, uid, ids, {'state':'on_reject'}, context=context)
     
     def send_email(self, cr, uid, ids, context={}):
