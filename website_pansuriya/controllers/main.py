@@ -280,29 +280,31 @@ class website_test(http.Controller):
         stone_objects =  product_stone.browse(cr,uid,stone_ids)
         stone_count = len(stone_objects)
         
+        #########################
         #limit 30 stones to load more stones on scroll
+        #########################
         
         values = []
         for stone in stone_objects:            
             val = {
-                'id' : stone.id,            
+                'id' : stone.id or '-',            
                 'count_collection' : stone_count,
-                'entity_id' : stone.id,
-                'sku' : stone.default_code,
-                'shape' : stone.shape_id.name,
-                'carat' : round(stone.weight,2),
-                'color' :  stone.color_id.name,
-                'clarity' :  stone.clarity_id.name,
-                'cut' :  stone.cut_id.name,
-                'polish' :  stone.polish_id.name,
-                'symmetry' : stone.symmetry_id.name,
-                'florescence' : stone.fluorescence_intensity_id.name,
-                'table' : stone.table_inc,
+                'entity_id' : stone.id or '-',
+                'sku' : stone.default_code or '-',
+                'shape' : stone.shape_id.name or '-',
+                'carat' : round(stone.weight,2) or '-',
+                'color' :  stone.color_id.name or '-',
+                'clarity' :  stone.clarity_id.name or '-',
+                'cut' :  stone.cut_id.name or '-',
+                'polish' :  stone.polish_id.name or '-',
+                'symmetry' : stone.symmetry_id.name or '-',
+                'florescence' : stone.fluorescence_intensity_id.name or '-',
+                'table' : stone.table_inc or '-',
                 'm1' :stone.product_length,
                 'm2' : stone.product_width,
                 'm3' : stone.product_height,
                 'imgStatus' : 0,
-                'lab' :  stone.lab_id.name,
+                'lab' :  stone.lab_id.name or '-',
                 'back_percentage' : stone.current_bid_amount,
                 'is_auction' : stone.is_auction,
                 'customer_bid_amount' : '',
