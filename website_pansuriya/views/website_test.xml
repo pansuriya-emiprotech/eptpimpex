@@ -70,6 +70,18 @@
 				</div>
 			</t>
 		</template>
+		
+		<template id="website.show_sign_in" optional="enabled" inherit_id="website.layout" name="Show Sign In" groups="base.group_public">
+		    <xpath expr="//ul[@id='top_menu']" position="inside">
+		        <li class="divider" t-ignore="true" t-if="website.user_id == user_id"/>
+		        <li t-ignore="true" t-if="website.user_id == user_id">
+		            <a t-attf-href="/web/login">
+		                <b>Sign in</b>
+		            </a>
+		        </li>
+		    </xpath>
+		</template>
+		
 		<template id="website_test_form" name="Website Test Form">
 			<t t-call="website_pansuriya.index">
 

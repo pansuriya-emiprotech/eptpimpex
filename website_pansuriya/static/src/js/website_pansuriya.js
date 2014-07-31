@@ -191,174 +191,176 @@ var domainname = "http://"+window.location.host+"/website-pansuriya/";
                 jQuery('#btnSearch').click();
             }
         });
-        jQuery('.DivGridInnerData').scroll(function()
-        {
-            var objGridData;
-			var bg_color = '';
-			var color = '';
-			var active_tab_name = "homegrid";
-            var scrollHeight = (dataLength * 30) - jQuery('.DivGridInnerData').height();
-            if (jQuery('.DivGridInnerData').scrollTop() == scrollHeight)
-            {
-
-                if (firstTime == 1)
-                {
-                    jQuery('#divNoMoreProduct').css('display', 'block');
-                    return false;
-                }
-
-                if (count_collection == dataLength)
-                {
-                    jQuery('#divNoMoreProduct').css('display', 'block');
-                    return false;
-                }
-
-                jQuery('#divMoreProductLoad').css('display', 'block');
-
-                loadData = dataLength;
-                filterParams['loadData'] = loadData;
-
-                jQuery.ajax({
-                    url: '',
-                    data: filterParams,
-                    success: function(data) {
-                        objGridData = JSON.parse(data);
-
-                        jQuery.each(objGridData, function(index, key) {
-                            var gridIndex = loadData + index;
-							if (objGridData[index].booked == 1)
-							{
-								bg_color = 'background-color:#D0282D;';
-								color = 'color:white;';
-							}
-							else
-							{
-								bg_color = '';
-								color = '';
-							}
-                            jsonGridData.push(objGridData[index]);
-                            if (index % 2 == 0) {
-                                tempClassType = "even";
-                            } else {
-                                tempClassType = "odd";
-                            }
-                            var imgProd;
-                            if (objGridData[index].imgStatus == 1) {
-                                imgProd = "camera_blue.png";
-                            } else {
-                                imgProd = "camera_gray.png";
-                            }
-
-                            var tempCheckBoxClass = "chkCompare" + index;
-                            var tempDivclass = "DivImg" + index;
-                            
-                            var tooltip_html = '';
-							var bid_column = ''; 
-							if(objGridData[index].is_auction == 1) { 				
-								bid_column = '<div class="gridcolumn21 makebid" cust_id="customer_bid' + objGridData[index].entity_id + '">'+
-										'<span>' + objGridData[index].customer_bid_amount + '</span>'+
-										'<button class="makebid_button makebid_button_'+objGridData[index].entity_id+'" id="makebid_button_' + objGridData[index].entity_id + '" type="button">Make Bid</button>'+
-										'<div id="makebid_button_'+ objGridData[index].entity_id +'_div" class="makebid_div">'+
-										'<form><input placeholder="Price" type="text" class="input-text" name="bid_price" id="bid_price_'+ objGridData[index].entity_id +'" />'+
-										'<br/> <button onclick="saveBid('+ objGridData[index].entity_id + ',' + objGridData[index].back_percentage +',' + new Date(objGridData[index].auction_end_time).getTime() + ',0)" type="button">'+
-										' Place Bid </button> <button onclick="closeBidDiv('+ objGridData[index].entity_id + ')" type="button">'+
-										'Close</button> </form> </div> </div>';
-							} else {
-								tooltip_html = '';
-								bid_column = '<div class="gridcolumn21" cust_id="customer_bid' + objGridData[index].entity_id + '"><span>' + objGridData[index].customer_bid_amount + '</span> </div>';
-							}   
-							                         
-							var tempGridJsonData = '<div id="gridrow_'+ objGridData[index].entity_id +'" class="gridrow_'+ objGridData[index].entity_id +' gridrow ' + tempClassType +' '+tempDivclass +'" style=' + bg_color + color + '>' +                   
-										'<div class="gridcolumn1" onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ')" style="cursor:pointer;color:#29A1B5;">' + objGridData[index].sku + '</div>' +
-										'<div class="gridcolumn2">' + objGridData[index].shape + '</div>' +
-										'<div class="gridcolumn3">' + objGridData[index].carat + '</div>' +
-										'<div class="gridcolumn4">' + objGridData[index].color + '</div>' +
-										'<div class="gridcolumn5">' + objGridData[index].clarity + '</div>' +
-										'<div class="gridcolumn6">' + objGridData[index].cut + '</div>' +
-										'<div class="gridcolumn7">' + objGridData[index].polish + '</div>' +
-										'<div class="gridcolumn8">' + objGridData[index].symmetry + '</div>' +
-										'<div class="gridcolumn9">' + objGridData[index].florescence + '</div>' +
-										'<div class="gridcolumn11">' + objGridData[index].table + '</div>' +
-										'<div class="gridcolumn12">' + objGridData[index].m1 +' * '+ objGridData[index].m2 + ' * '+ objGridData[index].m3 +'</div>' +                    
-										'<div class="gridcolumn20"><a target="_blank" href="' + objGridData[index].certificate_link + '">' + objGridData[index].lab + '</a></div>' +
-										'<div class="gridcolumn17">' + objGridData[index].rapnet_price + '</div>' +
-										'<div class="gridcolumn18">' + objGridData[index].carat_price + '</div>' +                    
-										'<div class="gridcolumn19">' + objGridData[index].price + '</div>' +
-										'<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ', ' + index + ')"><img  src="/website_pansuriya/static/src/images' + imgProd + '"></div></a>' +
-										'<div class="gridcolumn16 makebid'+objGridData[index].entity_id+'" id="makebid' + objGridData[index].entity_id + '">' + objGridData[index].back_percentage + '</div>' +                    
-										bid_column +                    
-										'<div class="gridcolumn22 auction_timer_'+objGridData[index].entity_id+'" id="auction_timer_'+objGridData[index].entity_id+'">'+ objGridData[index].auction_time +'</div>' +                                        
-										'<div class="gridcolumn15"><a href="javascript:void(0);" class="imgChk' + objGridData[index].entity_id + '" onClick="chkClickEvent(this,' + objGridData[index].entity_id + ')"><img class="imgChk" alt="check" src="/website_pansuriya/static/src/images/uncheck_box.png" /></a></div>' +                    
-										'</div>' +
-										'<div class="responsive_data" id="responsive_' + objGridData[index].entity_id + '"><div class="responsive_data_col_1" id="responsive_' + objGridData[index].entity_id + '_1"></div><div class="responsive_data_col_2" id="responsive_' + objGridData[index].entity_id + '_2"></div></div>';
-							jQuery(".DivGridInnerData").append(tempGridJsonData);
-							if(objGridData[index].is_auction == 1) {
-
-								//desable compare functionality
-								jQuery('.gridrow_'+ objGridData[index].entity_id).find('.gridcolumn15 > a').attr('onclick','javascript:void(0)');
-								
-								objGridData[index].auction_end_time = getAuctionEndTime(objGridData[index].current_time,objGridData[index].auction_end_time);
-								
-								jQuery('.auction_timer_' + objGridData[index].entity_id).countdown({
-								  date: new Date(objGridData[index].auction_end_time),
-								  render: function(data) {
-									 data.hours = data.hours + data.days * 24;
-									jQuery(this.el).html( data.hours + " : " + this.leadingZeros(data.min, 2) + " : " + this.leadingZeros(data.sec, 2));
-								  },
-								  onEnd: function(){
-										jQuery('.makebid_button_'+objGridData[index].entity_id).remove();
-										jQuery('.auction_timer_' + objGridData[index].entity_id).html('-');
-									}
-								});
-							}
-							else if(objGridData[index].is_auction == 0)
-							{
-								jQuery('.auction_timer_' + objGridData[index].entity_id).html('-');
-							}
-							if (objGridData[index].booked == 1)
-							{
-								rowDisabled('#gridrow_'+ objGridData[index].entity_id);
-							}
-							if (objGridData[index].imgStatus == 1)
-							{
-								var url = '<?php echo $this->getUrl("ajaxmodule/ajax/ajaxpopup") ?>id/' + objGridData[index].entity_id + '?iframe=true&width=855&height=530';
-							}
-							else
-							{
-								var url = '<?php echo $this->getUrl("ajaxmodule/ajax/ajaxpopup") ?>id/' + objGridData[index].entity_id + '?iframe=true&width=855&height=500';
-							}                       
-							jQuery("#prettyPhotoLinks").append('<a class="aPrettyPhoto" id="prettyPhoto_' + objGridData[index].entity_id + '" href="' + url + '" rel="prettyPhoto[iframe]">abc</a>');
-                        });
-                        
-						dataLength = jsonGridData.length;
-						jQuery('.aPrettyPhoto').prettyPhoto({
-							overlay_gallery: false,
-							social_tools: '',
-							animation_speed: 'fast',
-							slideshow: 10000,
-							deeplinking: false,
-							hideflash: true
-						});
-												
-						
-                        jQuery('#divMoreProductLoad').css('display', 'none');
-                        dataLength = jsonGridData.length;
-                        
-                        jQuery('.gridrow').hover(function() {
-							jQuery(this).children('.makebid').children('.makebid_button').show(200);
-						});
-						jQuery('.gridrow').mouseleave(function() {
-							jQuery(this).children('.makebid').children('.makebid_button').hide(500);			
-						});
-                    }
-                });
-            }
-            else
-            {
-                jQuery('#divNoMoreProduct').css('display', 'none');
-                return false;
-            }
-        });
+        
+//        jQuery('.DivGridInnerData').scroll(function()
+//        {
+//            var objGridData;
+//			var bg_color = '';
+//			var color = '';
+//			var active_tab_name = "homegrid";
+//            var scrollHeight = (dataLength * 30) - jQuery('.DivGridInnerData').height();
+//            if (jQuery('.DivGridInnerData').scrollTop() == scrollHeight)
+//            {
+//
+//                if (firstTime == 1)
+//                {
+//                    jQuery('#divNoMoreProduct').css('display', 'block');
+//                    return false;
+//                }
+//
+//                if (count_collection == dataLength)
+//                {
+//                    jQuery('#divNoMoreProduct').css('display', 'block');
+//                    return false;
+//                }
+//
+//                jQuery('#divMoreProductLoad').css('display', 'block');
+//
+//                loadData = dataLength;
+//                filterParams['loadData'] = loadData;
+//
+//                jQuery.ajax({
+//                    url: '',
+//                    data: filterParams,
+//                    success: function(data) {
+//                        objGridData = JSON.parse(data);
+//
+//                        jQuery.each(objGridData, function(index, key) {
+//                            var gridIndex = loadData + index;
+//							if (objGridData[index].booked == 1)
+//							{
+//								bg_color = 'background-color:#D0282D;';
+//								color = 'color:white;';
+//							}
+//							else
+//							{
+//								bg_color = '';
+//								color = '';
+//							}
+//                            jsonGridData.push(objGridData[index]);
+//                            if (index % 2 == 0) {
+//                                tempClassType = "even";
+//                            } else {
+//                                tempClassType = "odd";
+//                            }
+//                            var imgProd;
+//                            if (objGridData[index].imgStatus == 1) {
+//                                imgProd = "camera_blue.png";
+//                            } else {
+//                                imgProd = "camera_gray.png";
+//                            }
+//
+//                            var tempCheckBoxClass = "chkCompare" + index;
+//                            var tempDivclass = "DivImg" + index;
+//                            
+//                            var tooltip_html = '';
+//							var bid_column = ''; 
+//							if(objGridData[index].is_auction == 1) { 				
+//								bid_column = '<div class="gridcolumn21 makebid" cust_id="customer_bid' + objGridData[index].entity_id + '">'+
+//										'<span>' + objGridData[index].customer_bid_amount + '</span>'+
+//										'<button class="makebid_button makebid_button_'+objGridData[index].entity_id+'" id="makebid_button_' + objGridData[index].entity_id + '" type="button">Make Bid</button>'+
+//										'<div id="makebid_button_'+ objGridData[index].entity_id +'_div" class="makebid_div">'+
+//										'<form><input placeholder="Price" type="text" class="input-text" name="bid_price" id="bid_price_'+ objGridData[index].entity_id +'" />'+
+//										'<br/> <button onclick="saveBid('+ objGridData[index].entity_id + ',' + objGridData[index].back_percentage +',' + new Date(objGridData[index].auction_end_time).getTime() + ',0)" type="button">'+
+//										' Place Bid </button> <button onclick="closeBidDiv('+ objGridData[index].entity_id + ')" type="button">'+
+//										'Close</button> </form> </div> </div>';
+//							} else {
+//								tooltip_html = '';
+//								bid_column = '<div class="gridcolumn21" cust_id="customer_bid' + objGridData[index].entity_id + '"><span>' + objGridData[index].customer_bid_amount + '</span> </div>';
+//							}   
+//							                         
+//							var tempGridJsonData = '<div id="gridrow_'+ objGridData[index].entity_id +'" class="gridrow_'+ objGridData[index].entity_id +' gridrow ' + tempClassType +' '+tempDivclass +'" style=' + bg_color + color + '>' +                   
+//										'<div class="gridcolumn1" onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ')" style="cursor:pointer;color:#29A1B5;">' + objGridData[index].sku + '</div>' +
+//										'<div class="gridcolumn2">' + objGridData[index].shape + '</div>' +
+//										'<div class="gridcolumn3">' + objGridData[index].carat + '</div>' +
+//										'<div class="gridcolumn4">' + objGridData[index].color + '</div>' +
+//										'<div class="gridcolumn5">' + objGridData[index].clarity + '</div>' +
+//										'<div class="gridcolumn6">' + objGridData[index].cut + '</div>' +
+//										'<div class="gridcolumn7">' + objGridData[index].polish + '</div>' +
+//										'<div class="gridcolumn8">' + objGridData[index].symmetry + '</div>' +
+//										'<div class="gridcolumn9">' + objGridData[index].florescence + '</div>' +
+//										'<div class="gridcolumn11">' + objGridData[index].table + '</div>' +
+//										'<div class="gridcolumn12">' + objGridData[index].m1 +' * '+ objGridData[index].m2 + ' * '+ objGridData[index].m3 +'</div>' +                    
+//										'<div class="gridcolumn20"><a target="_blank" href="' + objGridData[index].certificate_link + '">' + objGridData[index].lab + '</a></div>' +
+//										'<div class="gridcolumn17">' + objGridData[index].rapnet_price + '</div>' +
+//										'<div class="gridcolumn18">' + objGridData[index].carat_price + '</div>' +                    
+//										'<div class="gridcolumn19">' + objGridData[index].price + '</div>' +
+//										'<div class="gridcolumn0"><a style="cursor:pointer"  onClick="showFullPopDiv(' + objGridData[index].entity_id + ', ' + objGridData[index].imgStatus + ', ' + index + ')"><img  src="/website_pansuriya/static/src/images' + imgProd + '"></div></a>' +
+//										'<div class="gridcolumn16 makebid'+objGridData[index].entity_id+'" id="makebid' + objGridData[index].entity_id + '">' + objGridData[index].back_percentage + '</div>' +                    
+//										bid_column +                    
+//										'<div class="gridcolumn22 auction_timer_'+objGridData[index].entity_id+'" id="auction_timer_'+objGridData[index].entity_id+'">'+ objGridData[index].auction_time +'</div>' +                                        
+//										'<div class="gridcolumn15"><a href="javascript:void(0);" class="imgChk' + objGridData[index].entity_id + '" onClick="chkClickEvent(this,' + objGridData[index].entity_id + ')"><img class="imgChk" alt="check" src="/website_pansuriya/static/src/images/uncheck_box.png" /></a></div>' +                    
+//										'</div>' +
+//										'<div class="responsive_data" id="responsive_' + objGridData[index].entity_id + '"><div class="responsive_data_col_1" id="responsive_' + objGridData[index].entity_id + '_1"></div><div class="responsive_data_col_2" id="responsive_' + objGridData[index].entity_id + '_2"></div></div>';
+//							jQuery(".DivGridInnerData").append(tempGridJsonData);
+//							if(objGridData[index].is_auction == 1) {
+//
+//								//desable compare functionality
+//								jQuery('.gridrow_'+ objGridData[index].entity_id).find('.gridcolumn15 > a').attr('onclick','javascript:void(0)');
+//								
+//								objGridData[index].auction_end_time = getAuctionEndTime(objGridData[index].current_time,objGridData[index].auction_end_time);
+//								
+//								jQuery('.auction_timer_' + objGridData[index].entity_id).countdown({
+//								  date: new Date(objGridData[index].auction_end_time),
+//								  render: function(data) {
+//									 data.hours = data.hours + data.days * 24;
+//									jQuery(this.el).html( data.hours + " : " + this.leadingZeros(data.min, 2) + " : " + this.leadingZeros(data.sec, 2));
+//								  },
+//								  onEnd: function(){
+//										jQuery('.makebid_button_'+objGridData[index].entity_id).remove();
+//										jQuery('.auction_timer_' + objGridData[index].entity_id).html('-');
+//									}
+//								});
+//							}
+//							else if(objGridData[index].is_auction == 0)
+//							{
+//								jQuery('.auction_timer_' + objGridData[index].entity_id).html('-');
+//							}
+//							if (objGridData[index].booked == 1)
+//							{
+//								rowDisabled('#gridrow_'+ objGridData[index].entity_id);
+//							}
+//							if (objGridData[index].imgStatus == 1)
+//							{
+//								var url = '<?php echo $this->getUrl("ajaxmodule/ajax/ajaxpopup") ?>id/' + objGridData[index].entity_id + '?iframe=true&width=855&height=530';
+//							}
+//							else
+//							{
+//								var url = '<?php echo $this->getUrl("ajaxmodule/ajax/ajaxpopup") ?>id/' + objGridData[index].entity_id + '?iframe=true&width=855&height=500';
+//							}                       
+//							jQuery("#prettyPhotoLinks").append('<a class="aPrettyPhoto" id="prettyPhoto_' + objGridData[index].entity_id + '" href="' + url + '" rel="prettyPhoto[iframe]">abc</a>');
+//                        });
+//                        
+//						dataLength = jsonGridData.length;
+//						jQuery('.aPrettyPhoto').prettyPhoto({
+//							overlay_gallery: false,
+//							social_tools: '',
+//							animation_speed: 'fast',
+//							slideshow: 10000,
+//							deeplinking: false,
+//							hideflash: true
+//						});
+//												
+//						
+//                        jQuery('#divMoreProductLoad').css('display', 'none');
+//                        dataLength = jsonGridData.length;
+//                        
+//                        jQuery('.gridrow').hover(function() {
+//							jQuery(this).children('.makebid').children('.makebid_button').show(200);
+//						});
+//						jQuery('.gridrow').mouseleave(function() {
+//							jQuery(this).children('.makebid').children('.makebid_button').hide(500);			
+//						});
+//                    }
+//                });
+//            }
+//            else
+//            {
+//                jQuery('#divNoMoreProduct').css('display', 'none');
+//                return false;
+//            }
+//        });
+        
 /*
         jQuery('.nav-tabs .with_icon').find('a').click(function() {
             var href = jQuery(this).attr('href').charAt(jQuery(this).attr('href').length - 1);
@@ -824,10 +826,9 @@ var domainname = "http://"+window.location.host+"/website-pansuriya/";
             girdle_to="";
             m1_to="";
             m2_to="";
-            m3_to="";
+            m3_to="";           
             
-            if(type=="home")
-            	isfirstreq = 1;
+            isfirstreq = 1;
         }
         
         jQuery('#divNoMoreProduct').css('display', 'none');
