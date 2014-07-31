@@ -82,6 +82,12 @@
 		    </xpath>
 		</template>
 		
+		<template id="website_pansuriya_checkout_signin" inherit_id="website_sale.checkout">
+		    <xpath expr="//small[@groups='base.group_public']" position="replace">
+		         or <a class='btn btn-primary' t-if="website.user_id == user_id" t-attf-href="/web?redirect=#{ request.httprequest.url }">Sign in</a>
+		    </xpath>
+		</template>
+		
 		<template id="website_test_form" name="Website Test Form">
 			<t t-call="website_pansuriya.index">
 
