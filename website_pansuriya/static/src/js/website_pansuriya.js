@@ -672,6 +672,7 @@ var domainname = "http://"+window.location.host+"/website-pansuriya/";
 //
     function sendReq(type)
     {    	
+    	var isfirstreq = 0;
 //        var url = 'http://localhost:8069/website-test/submit_json';
         var shape, carat, carat_to, color, colorto, clarity, cut, polish, symmetry, fluorescence, lab, table, table_to, location, girdle_from, girdle_to;
         var culet_size, culet_condition, m1, m1_to, m2, m2_to, m3, m3_to, carat_price, carat_price_to, price, price_to, back, back_to, report_no, reference_no;
@@ -807,7 +808,7 @@ var domainname = "http://"+window.location.host+"/website-pansuriya/";
 		}
         else
         {
-            shape = document.getElementById('shape').value;            
+            shape = document.getElementById('shape').value;
         	//shape = 37;
             cut_to = "";
             color_to = "";
@@ -825,6 +826,8 @@ var domainname = "http://"+window.location.host+"/website-pansuriya/";
             m2_to="";
             m3_to="";
             
+            if(type=="home")
+            	isfirstreq = 1;
         }
         
         jQuery('#divNoMoreProduct').css('display', 'none');
@@ -844,7 +847,7 @@ var domainname = "http://"+window.location.host+"/website-pansuriya/";
             lab: lab, fluorescence: fluorescence, fluorescence_to: fluorescence_to, table: table, table_to: table_to, carat_price: carat_price, carat_price_to: carat_price_to,
             price: price, price_to: price_to, back: back, back_to: back_to, girdle_from: girdle_from, girdle_to: girdle_to,
             culet_size: culet_size, culet_condition: culet_condition, m1: m1, m1_to: m1_to, m2: m2, m2_to: m2_to, m3: m3, m3_to: m3_to,
-            report_no: report_no, reference_no: reference_no, loadData: loadData, location: location};
+            report_no: report_no, reference_no: reference_no, loadData: loadData, location: location, isfirstreq: isfirstreq};
         
         //return;
         

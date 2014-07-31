@@ -276,7 +276,13 @@ class website_test(http.Controller):
         if filter_params.get('reference_no',False):
             domain.append(('default_code','=',filter_params.get('reference_no')))                           
         
-        stone_ids = product_stone.search(cr,uid,domain)
+       
+        if(filter_params.get('isfirstreq',0)==1):
+            offset = 0
+            stone_ids = product_stone.search(cr,uid,domain,offset=offset,limit=30)
+        else:
+            stone_ids = product_stone.search(cr,uid,domain)
+            
         stone_objects =  product_stone.browse(cr,uid,stone_ids)
         stone_count = len(stone_objects)
         
